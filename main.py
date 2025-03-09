@@ -11,7 +11,7 @@ from sqlalchemy import text
 
 # === DATABASE SETUP ===
 # MySQL 접속정보를 본인 환경에 맞게 수정하세요.
-DATABASE_URL = "mysql+mysqlconnector://root:gugumedical2025!@localhost:8000/emr_db"
+DATABASE_URL = "mysql+mysqlconnector://root:gugumedical2025!@localhost/emr_db"
 
 
 engine = create_engine(DATABASE_URL, echo=True)
@@ -41,7 +41,7 @@ Base.metadata.create_all(bind=engine)
 # === FASTAPI SETUP ===
 app = FastAPI()
 
-
+templates = Jinja2Templates(directory="templates")
 
 # 데이터베이스 세션 의존성
 def get_db():
